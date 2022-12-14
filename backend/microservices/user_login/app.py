@@ -7,12 +7,12 @@ app = Flask(__name__)
 app.secret_key = "testing"
 #connoct to your Mongo DB database
 # client = pymongo.MongoClient("mongodb+srv://Richard:Password@cluster0-xth9g.mongodb.net/Richard?retryWrites=true&w=majority")
-client = pymongo.MongoClient("mongodb+srv://root:root@cluster0.ptvh22x.mongodb.net/test")
+client = pymongo.MongoClient("mongodb://localhost:27017")
 
 #get the database name
-db = client.get_database('loginData')
+db = client.get_database('twittair')
 #get the particular collection that contains the data
-records = db.register
+records = db.users
 
 #assign URLs to have a particular route 
 @app.route("/", methods=['post', 'get'])
@@ -24,8 +24,12 @@ def index():
     if request.method == "POST":
         user = request.form.get("fullname")
         email = request.form.get("email")
-        password1 = request.form.get("password1")
+        password = request.form.get("password")
         password2 = request.form.get("password2")
+        liked_twits = [""]
+        rt_twits = [""]
+        
+         
         #if found in database showcase that it's found 
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
@@ -35,7 +39,7 @@ def index():
         if email_found:
             message = 'This email already exists in database'
             return render_template('index.html', message=message)
-        if password1 != password2:
+        if password != password2:
             message = 'Passwords should match!'
             return render_template('index.html', message=message)
         else:
@@ -84,7 +88,6 @@ def login():
             return render_template('login.html', message=message)
     return render_template('login.html', message=message)
 
-# register
 
 @app.route('/logged_in')
 def logged_in():
@@ -94,6 +97,7 @@ def logged_in():
     else:
         return redirect(url_for("login"))
 
+
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
     if "email" in session:
@@ -101,8 +105,6 @@ def logout():
         return render_template("signout.html")
     else:
         return render_template('index.html')
-
-
 
 
 
