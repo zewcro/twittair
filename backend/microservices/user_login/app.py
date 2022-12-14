@@ -1,24 +1,26 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
-#set app as a Flask instance 
+# set app as a Flask instance
 app = Flask(__name__)
-#encryption relies on secret keys so they could be run
+# encryption relies on secret keys so they could be run
 app.secret_key = "testing"
-#connoct to your Mongo DB database
+# connoct to your Mongo DB database
 # client = pymongo.MongoClient("mongodb+srv://Richard:Password@cluster0-xth9g.mongodb.net/Richard?retryWrites=true&w=majority")
 client = pymongo.MongoClient("mongodb://localhost:27017")
 
-#get the database name
+# get the database name
 db = client.get_database('twittair')
-#get the particular collection that contains the data
+# get the particular collection that contains the data
 records = db.users
 
-#assign URLs to have a particular route 
+# assign URLs to have a particular route
+
+
 @app.route("/", methods=['post', 'get'])
 def index():
     message = ''
-    #if method post in index
+    # if method post in index
     if "email" in session:
         return redirect(url_for("logged_in"))
     if request.method == "POST":
@@ -28,9 +30,8 @@ def index():
         password2 = request.form.get("password2")
         liked_twits = [""]
         rt_twits = [""]
-        
-         
-        #if found in database showcase that it's found 
+
+        # if found in database showcase that it's found
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
         if user_found:
@@ -43,20 +44,19 @@ def index():
             message = 'Passwords should match!'
             return render_template('index.html', message=message)
         else:
-            #hash the password and encode it
+            # hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
-            #assing them in a dictionary in key value pairs
-            user_input = {'name': user, 'email': email, 'password': hashed}
-            #insert it in the record collection
+            # assing them in a dictionary in key value pairs
+            user_input = {'name': user, 'email': email,'password': hashed, 'liked_twits': liked_twits, 'rt_twits': rt_twits}
+            # insert it in the record collection
             records.insert_one(user_input)
-            
-            #find the new created account and its email
+
+            # find the new created account and its email
             user_data = records.find_one({"email": email})
             new_email = user_data['email']
-            #if registered redirect to logged in as the registered user
+            # if registered redirect to logged in as the registered user
             return render_template('logged_in.html', email=new_email)
     return render_template('index.html')
-
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -69,12 +69,12 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        #check if email exists in database
+        # check if email exists in database
         email_found = records.find_one({"email": email})
         if email_found:
             email_val = email_found['email']
             passwordcheck = email_found['password']
-            #encode the password and check if it matches
+            # encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
                 return redirect(url_for('logged_in'))
@@ -107,8 +107,5 @@ def logout():
         return render_template('index.html')
 
 
-
-
-
 if __name__ == "__main__":
-  app.run(debug=True)
+    app.run(debug=True)
