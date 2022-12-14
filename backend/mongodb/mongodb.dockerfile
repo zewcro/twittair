@@ -1,4 +1,6 @@
 #Create MongoDB Image for MongoDB Tutorial Application
-FROM mongo
+FROM mongo:latest
+
+
 
 EXPOSE 27017
