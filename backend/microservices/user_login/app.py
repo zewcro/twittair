@@ -54,8 +54,11 @@ def index():
             # find the new created account and its email
             user_data = records.find_one({"email": email})
             new_email = user_data['email']
+         
+            # if user exist and he is connected we return hime to the react front          
+            return redirect("http://localhost:3000/")
             # if registered redirect to logged in as the registered user
-            return render_template('logged_in.html', email=new_email)
+            #return render_template('logged_in.html', email=new_email)
     return render_template('index.html')
 
 
@@ -92,8 +95,9 @@ def login():
 @app.route('/logged_in')
 def logged_in():
     if "email" in session:
-        email = session["email"]
-        return render_template('logged_in.html', email=email)
+        return redirect("http://localhost:3000/")
+        # email = session["email"]
+        # return render_template('logged_in.html', email=email)
     else:
         return redirect(url_for("login"))
 
