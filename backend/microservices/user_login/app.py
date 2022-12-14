@@ -30,6 +30,7 @@ def index():
         password2 = request.form.get("password2")
         liked_twits = [""]
         rt_twits = [""]
+        user_posts = [""]
 
         # if found in database showcase that it's found
         user_found = records.find_one({"name": user})
@@ -47,7 +48,7 @@ def index():
             # hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
             # assing them in a dictionary in key value pairs
-            user_input = {'name': user, 'email': email,'password': hashed, 'liked_twits': liked_twits, 'rt_twits': rt_twits}
+            user_input = {'name': user, 'email': email,'password': hashed, 'liked_twits': liked_twits, 'rt_twits': rt_twits, 'user_posts': user_posts}
             # insert it in the record collection
             records.insert_one(user_input)
 

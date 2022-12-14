@@ -8,7 +8,7 @@ export default class Home extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "http://localhost:5000/posts";
+    const url = "http://localhost:5001/posts";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ posts: data });
