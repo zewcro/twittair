@@ -3,8 +3,7 @@ from flask_mongoengine import MongoEngine
 from flask_cors import CORS
 
 from pymongo import MongoClient 
-
-
+import pymongo
 # The goal of this service si to manage data for the 'posts' collection
 
 app = Flask(__name__)
@@ -12,7 +11,7 @@ CORS(app)
 
 
 app.config["MONGODB_SETTINGS"] ={
-    "host": "mongodb://localhost:27017/twittair"
+    "host": "mongodb+srv://root:root@twittair.bk1wjym.mongodb.net/twittair"
 }
 
 db = MongoEngine(app)

@@ -16,7 +16,6 @@ records = db.users
 
 # assign URLs to have a particular route
 
-
 @app.route("/", methods=['post', 'get'])
 def index():
     message = ''
