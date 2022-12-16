@@ -6,6 +6,9 @@ export default class Home extends React.Component {
     loading: true,
     posts: null,
   };
+  
+
+
 
   async componentDidMount() {
     const url = "http://localhost:5001/posts";

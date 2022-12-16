@@ -47,6 +47,7 @@ def get_specific_post(id=""):
         return 'ERROR : Invalid given ID, try another'
     else:
         return "ERROR :The post that you trying to display does not exist!"
+    
 
 
 if __name__ == "__main__":

@@ -1,3 +1,8 @@
 .section{
     padding: 20px;
 }
+
+
+.MainContainer{
+    position: fixed;
+}
