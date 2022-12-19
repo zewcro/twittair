@@ -2,10 +2,10 @@ import React from "react";
 
 import "../Styles/LeftMenu.css";
 
-function Login() {
+function Explorer() {
   return (
-    <p> Login Form ! </p>
+    <p> Explorer  </p>
   );
 }
 
-export default Login;
+export default Explorer;

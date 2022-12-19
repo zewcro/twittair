@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 
 import "../Styles/Twitbox.css";
 
-import axios from 'axios';
+import axios from "axios";
 
 function TwitBox() {
   const [message, setMessage] = useState("");
@@ -14,22 +14,15 @@ function TwitBox() {
     setMessage(event.target.value);
   };
 
-  
-  function currDate(){
-    return new Date().toLocaleString().replace(',','');
+  function currDate() {
+    return new Date().toLocaleString().replace(",", "");
   }
 
-  async function postData() {
-    const postData = {
-      post_id: "10",
-      post_author: "random",
-      post_content:
-        "ceci est un post de test pour vérifier le bon fonctionnement du backend",
-      nb_like: 0,
-      nb_rt: 0,
-      published_date: "2022/12/12",
-    };
-  }
+  const feedRefreshing = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
 
   const postTwit = (event) => {
     // content of the twit
@@ -37,20 +30,21 @@ function TwitBox() {
     const new_twit_content = twit_content.current.value;
 
     const url = "http://localhost:5001/new_twit";
-    axios.post(url, {
-       
-          "post_id": "",
-          "post_author": "user",
-          "post_content": new_twit_content,
-          "nb_like": 0,
-          "nb_rt": 0,
-          "published_date": currDate()
-      },
-      )
+    axios
+      .post(url, {
+        post_id: "",
+        post_author: "user",
+        post_content: new_twit_content,
+        nb_like: 0,
+        nb_rt: 0,
+        published_date: currDate(),
+      })
       .then((response) => console.log(response.status))
       .catch((err) => console.warn(err));
     // clean the twit box
     cleanBox();
+    // refresh the feed to display latest posts
+    feedRefreshing();
   };
 
   const cleanBox = () => {

@@ -8,8 +8,6 @@ export default class Home extends React.Component {
   };
   
 
-
-
   async componentDidMount() {
     const url = "http://localhost:5001/posts";
     const response = await fetch(url);

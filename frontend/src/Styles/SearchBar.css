@@ -1,9 +1,5 @@
-body{
-  padding-top: 75px;
-}
-
 .search-container{
-  width: 490px;
+  width: 300px;
   display: block;
   margin: 0 auto;
 }
@@ -27,5 +23,8 @@ input#search-bar{
   right: -45px;
 }
 
-
+.MainContainer{
+  position: fixed;
+  padding: 20px;
+}
 
