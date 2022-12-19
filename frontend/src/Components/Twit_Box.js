@@ -21,7 +21,7 @@ function TwitBox() {
   const feedRefreshing = () => {
     setTimeout(() => {
       window.location.reload();
-    }, 500);
+    }, 550);
   };
 
   const postTwit = (event) => {
