@@ -4,6 +4,8 @@ from flask_cors import CORS
 
 from pymongo import MongoClient 
 import pymongo
+
+
 # The goal of this service si to manage data for the 'posts' collection
 
 app = Flask(__name__)
@@ -20,10 +22,15 @@ db = MongoEngine(app)
 class posts(db.Document):
     post_id = db.StringField()
     post_author = db.StringField()
+    post_content = db.StringField()
     nb_like = db.IntField()
     nb_rt = db.IntField() 
     published_date = db.StringField()
 
+
+class newTwit(db.Document):
+    author = db.StringField()
+    content = db.StringField()
 
 # return all posts documents from mongodb
 @app.route('/posts',methods=["GET"])
@@ -48,6 +55,15 @@ def get_specific_post(id=""):
     else:
         return "ERROR :The post that you trying to display does not exist!"
     
+
+    
+# add a new ad to the collection with given details
+@app.route('/new_twit', methods=["POST"])
+def createAds(): 
+    data = request.json
+    new_twit = posts(**data).save()
+    return "twit've been created"
+
 
 
 if __name__ == "__main__":
