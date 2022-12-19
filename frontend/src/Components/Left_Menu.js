@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 import "../Styles/LeftMenu.css";
 
@@ -12,36 +13,33 @@ function LeftMenu() {
 
         <div className="section">
           <div className="section_notifications">
-            <h2> Notifications </h2>
+            <a href="/notifications">
+              <h2> Notifications </h2>
+            </a>
           </div>
         </div>
 
         <div className="section">
           <div className="section_messages">
-            <h2> Messages </h2>
+            <a href="/messages">
+              <h2> Messages </h2>
+            </a>
           </div>
-        </div>
-        <div className="section">
-          <div className="section_signets">
-            <h2> Signets</h2>
-          </div>
-        </div>
 
-        <div className="section">
-          <div className="section_listes">
-            <h2> Listes</h2>
+          <div className="section">
+            <div className="section_Profil">
+              <a href="/profil">
+                <h2> Profil </h2>
+              </a>
+            </div>
           </div>
-        </div>
 
-        <div className="section">
-          <div className="section_Profil">
-            <h2> Profil </h2>
-          </div>
-        </div>
-
-        <div className="section">
-          <div className="section_plus">
-            <h2> Plus </h2>
+          <div className="section">
+            <div className="section_plus">
+              <a href="/plus">
+                <h2> Plus </h2>
+              </a>
+            </div>
           </div>
         </div>
       </div>
