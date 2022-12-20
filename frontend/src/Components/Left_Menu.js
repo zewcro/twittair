@@ -8,7 +8,9 @@ function LeftMenu() {
     <div className="MainContainer">
       <div className="section">
         <div className="section_explorer">
+        <a href="/home">
           <h2> Explorer </h2>
+        </a>
         </div>
 
         <div className="section">
