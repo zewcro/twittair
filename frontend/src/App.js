@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
-import Register from "./Components/Register";
+import SignUp from "./Components/SignUp";
 import Explorer from "./Components/Explorer";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -22,7 +22,7 @@ function App() {
           </Route>
 
           <Route path="/register">
-            <Register />
+            <SignUp />
           </Route>
 
           <Route path="/home">
