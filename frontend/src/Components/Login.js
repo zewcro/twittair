@@ -19,16 +19,13 @@ function Login() {
     setPassword('');
   }
 
-
   function submitLogging() {
     axios.post('http://127.0.0.1:5002/logging', {
-      username: 'Fred',
-      password: 'Flintstone'
+      username: username,
+      password: password
     })
 
-    
   }
-
 
   return (
     <div className="container">
