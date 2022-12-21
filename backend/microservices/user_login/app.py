@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 from pymongo import MongoClient 
 import pymongo
-
+import json
 
 # The goal of this service si to manage data for the 'posts' collection
 
@@ -17,7 +17,6 @@ app.config["MONGODB_SETTINGS"] ={
 }
 
 db = MongoEngine(app)
-
 
 class users(db.Document):
     profil_pic = db.StringField()
@@ -43,6 +42,26 @@ def createAds():
     new_user = users(**data).save()
     return "user've been created"
 
+
+
+@app.route('/logging',methods=["POST"])
+def login():
+    # we get the data sended from react
+    data = request.json
+    # instancing a new user with the data sended from react
+    user = users(**data).to_json()
+    # convert our var to a json object
+    json_user = json.loads(user)
+    # get variables 'username' and 'password' from json object
+    username = json_user["username"]
+    password = json_user["password"]
+
+    # check if user & password of this user are correct
+
+    # displaying some infos for debugging
+    print('user username currently logging in is ' +  username + ' and password is ' + password)
+    
+    return user
 
 
 if __name__ == "__main__":

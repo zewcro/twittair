@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+ 
 import "../Styles/SignUp.css";
 
 function Login() {
@@ -15,6 +17,16 @@ function Login() {
 
     setUsername('');
     setPassword('');
+  }
+
+
+  function submitLogging() {
+    axios.post('http://127.0.0.1:5002/logging', {
+      username: 'Fred',
+      password: 'Flintstone'
+    })
+
+    
   }
 
 
@@ -49,7 +61,7 @@ function Login() {
             />
           </Form.Group>
           <Form.Group>
-            <Button as="sub" variant="primary" onClick={loginUser}>
+            <Button as="sub" variant="primary" onClick={submitLogging}>
               SignUp
             </Button>
           </Form.Group>
