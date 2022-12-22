@@ -8,6 +8,10 @@ import Right_Menu from "./Right_menu";
 
 
 function Home() {
+  
+  const connected_user = document.cookie.split("=")[2];
+  console.log("connected user is :" + connected_user);
+
   return (
     <div className="row">
       <div className="column">

@@ -6,8 +6,14 @@ import "../Styles/Twitbox.css";
 import axios from "axios";
 
 function TwitBox() {
+
+
+  const connected_user = document.cookie.split("=")[2];
+  console.log("connected user is :" + connected_user);
+
   const [message, setMessage] = useState("");
   const twit_content = useRef(null);
+
 
   const handleMessageChange = (event) => {
     // get the text area value
@@ -33,7 +39,7 @@ function TwitBox() {
     axios
       .post(url, {
         post_id: "",
-        post_author: "user",
+        post_author: connected_user,
         post_content: new_twit_content,
         nb_like: 0,
         nb_rt: 0,

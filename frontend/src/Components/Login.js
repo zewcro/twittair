@@ -30,11 +30,14 @@ function Login() {
       let status_code = res.status;
       if (status_code == '200'){
         console.log('le status code vaut bien 200, donc vrai');
-        window.location.href = '/home'
+        window.location.href = '/home';
+        // stock the username inside a cookie
+        document.cookie = 'user='+username;
       }
-      else{
-        console.log('nop')
-        window.location.href = '/login'
+      else {
+        alert('Username or password incorrect');
+        window.location.href = '/login';
+        // do nothing
       }
     })
   }

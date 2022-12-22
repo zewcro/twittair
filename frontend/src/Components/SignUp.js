@@ -33,8 +33,8 @@ const SignUpPage = () => {
           element.parentElement.innerHTML = `Error: ${error.message}`;
           console.error("There was an error!", error);
         });
-
       reset();
+      window.location.href = "/login";
     } else {
       alert("Password do not matchs");
     }
