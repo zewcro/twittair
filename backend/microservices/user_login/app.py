@@ -59,15 +59,19 @@ def login():
     check_if_user_exist = Users.objects(username=username,password=password).count()
 
     if check_if_user_exist != 0: 
-        print('user & pass are correct')
         allow_connection = True 
-       
+        print(str(allow_connection) + ' user & pass are correct')
+      
     else: 
-        print('user & pass incorrect')
         allow_connection = False
+        print(str(allow_connection) + ' user & pass incorrect')
     
-    # if allow_connection == True:
-    #     return redirect('http://localhost:3000/home')
+    if allow_connection == True:
+        # connection valid : move on'/home'
+        return 'authorized', 200	 
+    else:
+        # connection not valid : stay on /login
+        return 'refused', 418
         
     # if result != "" : connection ok else connection nok 
     # displaying some infos for debugging

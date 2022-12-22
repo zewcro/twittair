@@ -11,7 +11,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = () =>{
+  const loginUser = () =>{ 
     console.log(username);
     console.log(password);
 
@@ -19,12 +19,24 @@ function Login() {
     setPassword('');
   }
 
-  function submitLogging() {
+  async function submitLogging() {
     axios.post('http://127.0.0.1:5002/logging', {
       username: username,
       password: password
+    }) 
+     .then(res => {
+      console.log(res.status);
+      
+      let status_code = res.status;
+      if (status_code == '200'){
+        console.log('le status code vaut bien 200, donc vrai');
+        window.location.href = '/home'
+      }
+      else{
+        console.log('nop')
+        window.location.href = '/login'
+      }
     })
-
   }
 
   return (
