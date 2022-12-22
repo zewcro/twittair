@@ -1,9 +1,7 @@
-from flask import Flask, request 
+from flask import Flask, jsonify, redirect, request 
 from flask_mongoengine import MongoEngine
 from flask_cors import CORS
 
-from pymongo import MongoClient 
-import pymongo
 import json
 
 # The goal of this service si to manage data for the 'posts' collection
@@ -11,14 +9,13 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-
 app.config["MONGODB_SETTINGS"] ={
     "host": "mongodb+srv://root:root@twittair.bk1wjym.mongodb.net/twittair"
 }
 
 db = MongoEngine(app)
 
-class users(db.Document):
+class Users(db.Document):
     profil_pic = db.StringField()
     email = db.StringField()
     username = db.StringField()
@@ -31,7 +28,7 @@ class users(db.Document):
 # return all posts documents from mongodb
 @app.route('/users',methods=["GET"])
 def getAllUsers():
-    getUser = users.objects().to_json()
+    getUser = Users.objects().to_json()
     return getUser
 
     
@@ -39,9 +36,8 @@ def getAllUsers():
 @app.route('/new_user', methods=["POST"])
 def createAds(): 
     data = request.json
-    new_user = users(**data).save()
+    new_user = Users(**data).save()
     return "user've been created"
-
 
 
 @app.route('/logging',methods=["POST"])
@@ -49,7 +45,7 @@ def login():
     # we get the data sended from react
     data = request.json
     # instancing a new user with the data sended from react
-    user = users(**data).to_json()
+    user = Users(**data).to_json()
     # convert our var to a json object
     json_user = json.loads(user)
     # get variables 'username' and 'password' from json object
@@ -58,11 +54,24 @@ def login():
 
     # check if user & password of this user are correct
 
-    # displaying some infos for debugging
-    print('user username currently logging in is ' +  username + ' and password is ' + password)
-    
-    return user
+    #print('user username currently logging in is ' + username + ' and password is ' + password)
 
+    check_if_user_exist = Users.objects(username=username,password=password).count()
+
+    if check_if_user_exist != 0: 
+        print('user & pass are correct')
+        allow_connection = True 
+       
+    else: 
+        print('user & pass incorrect')
+        allow_connection = False
+    
+    # if allow_connection == True:
+    #     return redirect('http://localhost:3000/home')
+        
+    # if result != "" : connection ok else connection nok 
+    # displaying some infos for debugging
+    
 
 if __name__ == "__main__":
     app.run(port=5002)
