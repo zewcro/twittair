@@ -71,7 +71,7 @@ def login():
         return 'authorized', 200	 
     else:
         # connection not valid : stay on /login
-        return 'refused', 418
+        return 'refused', 300
         
     # if result != "" : connection ok else connection nok 
     # displaying some infos for debugging

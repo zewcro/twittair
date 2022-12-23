@@ -3,21 +3,12 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
  
 import "../Styles/SignUp.css";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const loginUser = () =>{ 
-    console.log(username);
-    console.log(password);
-
-    setUsername('');
-    setPassword('');
-  }
 
   async function submitLogging() {
     axios.post('http://127.0.0.1:5002/logging', {
@@ -34,9 +25,8 @@ function Login() {
         // stock the username inside a cookie
         document.cookie = 'user='+username;
       }
-      else {
+      else  {
         alert('Username or password incorrect');
-        window.location.href = '/login';
         // do nothing
       }
     })
@@ -74,7 +64,7 @@ function Login() {
           </Form.Group>
           <Form.Group>
             <Button as="sub" variant="primary" onClick={submitLogging}>
-              SignUp
+              Login
             </Button>
           </Form.Group>
           <Form.Group>
