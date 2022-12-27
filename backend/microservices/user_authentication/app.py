@@ -25,7 +25,7 @@ class Users(db.Document):
     user_posts = db.ListField()
 
 
-# return all posts documents from mongodb
+# return all users documents from mongodb
 @app.route('/users',methods=["GET"])
 def getAllUsers():
     getUser = Users.objects().to_json()
@@ -38,6 +38,14 @@ def createAds():
     data = request.json
     new_user = Users(**data).save()
     return "user've been created"
+
+
+# get a specific user 
+@app.route('/user/<username>',methods=["GET"])
+def getUser(username=""): 
+    user = Users.objects().get(username=username).to_json()
+    return user
+
 
 
 @app.route('/logging',methods=["POST"])

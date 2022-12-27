@@ -19,11 +19,14 @@ function Login() {
       console.log(res.status);
       
       let status_code = res.status;
+      console.log(username);
+      console.log(password);
+      document.cookie = 'user='+username;
       if (status_code == '200'){
         console.log('le status code vaut bien 200, donc vrai');
         window.location.href = '/home';
         // stock the username inside a cookie
-        document.cookie = 'user='+username;
+      
       }
       else  {
         alert('Username or password incorrect');

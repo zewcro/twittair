@@ -9,7 +9,7 @@ import Right_Menu from "./Right_menu";
 
 function Home() {
   
-  const connected_user = document.cookie.split("=")[2];
+  const connected_user = document.cookie.split("=")[1];
   console.log("connected user is :" + connected_user);
 
   return (

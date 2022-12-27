@@ -8,7 +8,7 @@ import axios from "axios";
 function TwitBox() {
 
 
-  const connected_user = document.cookie.split("=")[2];
+  const connected_user = document.cookie.split("=")[1];
   console.log("connected user is :" + connected_user);
 
   const [message, setMessage] = useState("");
@@ -64,7 +64,7 @@ function TwitBox() {
     <div className="twitbox_container">
       <textarea
         className="twitbox_textarea"
-        placeholder="Quoi de neuf ?"
+        placeholder={"Quoi de neuf  " + connected_user + " ?"}
         id="twit_box_content"
         onChange={handleMessageChange}
         ref={twit_content}
