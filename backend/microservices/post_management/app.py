@@ -19,7 +19,7 @@ app.config["MONGODB_SETTINGS"] ={
 db = MongoEngine(app)
 
 
-class posts(db.Document):
+class Posts(db.Document):
     post_id = db.StringField()
     post_author = db.StringField()
     post_content = db.StringField()
@@ -35,7 +35,7 @@ class newTwit(db.Document):
 # return all posts documents from mongodb
 @app.route('/posts',methods=["GET"])
 def get_all_posts():
-    twittair_posts = posts.objects().to_json()
+    twittair_posts = Posts.objects().to_json()
     return twittair_posts
 
 
@@ -43,12 +43,12 @@ def get_all_posts():
 @app.route('/post/<id>',methods=["GET"])
 def get_specific_post(id=""):
 
-    posts_qty = posts.objects.count()
+    posts_qty = Posts.objects.count()
 
   # error management : we display specific message for each possible error
 
     if( id <=  str(posts_qty)): 
-        specific_post = posts.objects().get(post_id = id).to_json()
+        specific_post = Posts.objects().get(post_id = id).to_json()
         return specific_post
     elif(id > str(posts_qty)): 
         return 'ERROR : Invalid given ID, try another'
@@ -56,6 +56,14 @@ def get_specific_post(id=""):
         return "ERROR :The post that you trying to display does not exist!"
     
 
+    
+# return all the post where the author is equal to connected user
+@app.route('/posts/feed/<username>', methods=["GET"])
+def getUserPostsFeed(username=""): 
+    user_posts_feed = Posts.objects().filter(post_author=username).to_json()
+    return user_posts_feed
+
+    
     
 # add a new ad to the collection with given details
 @app.route('/new_twit', methods=["POST"])
