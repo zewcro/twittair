@@ -1,36 +1,67 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    font-family: arial;
-    position: relative;
-  }
-  
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-  
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-  
-  button:hover, a:hover {
-    opacity: 0.7;
-  }
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 1px;
+  border: 2px solid grey;
+}
+
+
+.banner_img_container {
+  width: 100%;
+  margin-left: 0%;
+  height: 90%;
+  position: relative;
+}
+
+
+.banner_img{
+  width: 100%;
+  height: 100%;
+  margin-left: -2%;
+  height: 60%;
+  position: relative;
+}
+
+
+.profil_pic_container{
+  background-color: blue;
+  width: 10%;
+  height: 20%;
+  margin-top: -12%;
+  border-radius: 50%;
+  margin-left: -1%;
+  position: absolute;
+}
+
+
+.profil_pic {
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+  margin-top: 0%;
+  border-radius: 50%;
+  margin-left: -50%;
+  position: absolute;
+}
+
+
+.user_name_informations {
+  margin-top:-2%;
+  margin-left: 2%;
+  position: absolute;
+}
+
+.biography_container {  
+  margin-top: -10%;
+  max-width: 95%;
+}
+
+.displayed_name {
+  margin-left: -40%;
+  font-size: 18px;
+  max-width: 200px;
+}
+
+.username {
+    margin-left: -60%;
+}

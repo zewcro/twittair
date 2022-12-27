@@ -17,9 +17,13 @@ db = MongoEngine(app)
 
 class Users(db.Document):
     profil_pic = db.StringField()
+    banner_img = db.StringField()
     email = db.StringField()
     username = db.StringField()
+    displayed_name = db.StringField()
+    biography = db.StringField()
     password = db.StringField()
+    followers = db.ListField()
     liked_twits = db.ListField()
     rt_twits = db.ListField()
     user_posts = db.ListField()

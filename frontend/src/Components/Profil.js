@@ -3,6 +3,8 @@ import axios from "axios";
 
 import LeftMenu from "./Left_Menu";
 import Right_Menu from "./Right_menu";
+import TwitFeed from "./Twit_Feed";
+
 
 import "../Styles/LeftMenu.css";
 import "../Styles/Profil.css";
@@ -28,7 +30,6 @@ function Profil() {
         console.log("error", error);
       }
     };
-    
     fetchData();
 }, []);
 
@@ -38,19 +39,28 @@ function Profil() {
         <LeftMenu />
       </div>
       <div className="column">
-        <div className="card">
-        <img src={userData.profil_pic} alt="profil_pic" />
-        <h1>{userData.username}</h1>
-        <p className="title">"{userData.displayedName}"</p>
-        <p>Biography</p>
+        <div className="container">
+          <div className="banner_img_container">
+          <img className="banner_img"src={userData.banner_img} alt="banner_img" />
+          </div>
+          <div className="profil_pic_container">
+            <img className="profil_pic"src={userData.profil_pic} alt="profil_pic" />
+          </div>
+          <div className="user_name_informations">
+          <h3 className="displayed_name">{userData.displayed_name}</h3>
+          <p className="username">@{userData.username}</p>
+        </div>
+        <div className="biography_container">
+        <p>{userData.biography}</p>
+        </div>
         <div>
        </div>
-        <p><button>Edit</button></p>
       </div>
       </div>
       <div className="column">
         <Right_Menu />
       </div>
+      <TwitFeed />
     </div>
   );
 }

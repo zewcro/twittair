@@ -64,7 +64,7 @@ function TwitBox() {
     <div className="twitbox_container">
       <textarea
         className="twitbox_textarea"
-        placeholder={"Quoi de neuf  " + connected_user + " ?"}
+        placeholder={"Quoi de neuf " + connected_user + " ?"}
         id="twit_box_content"
         onChange={handleMessageChange}
         ref={twit_content}
