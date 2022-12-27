@@ -30,6 +30,7 @@ function TwitBox() {
     }, 550);
   };
 
+  
   const postTwit = (event) => {
     // content of the twit
     console.log(twit_content.current.value);
