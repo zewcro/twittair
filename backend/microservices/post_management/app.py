@@ -22,6 +22,7 @@ db = MongoEngine(app)
 class Posts(db.Document):
     post_id = db.StringField()
     post_author = db.StringField()
+    author_profil_pic = db.StringField()
     post_content = db.StringField()
     nb_like = db.IntField()
     nb_rt = db.IntField() 
@@ -69,7 +70,7 @@ def getUserPostsFeed(username=""):
 @app.route('/new_twit', methods=["POST"])
 def createAds(): 
     data = request.json
-    new_twit = posts(**data).save()
+    new_twit = Posts(**data).save()
     return "twit've been created"
 
 

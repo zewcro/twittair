@@ -49,9 +49,12 @@ function Profil() {
           <div className="user_name_informations">
           <h3 className="displayed_name">{userData.displayed_name}</h3>
           <p className="username">@{userData.username}</p>
+          
         </div>
         <div className="biography_container">
-        <p>{userData.biography}</p>
+        <p className="biography_data">{userData.biography}</p>
+          <p className="followers">followers : {userData.followers_count} | following : {userData.following_count}</p>
+        
         </div>
         <div>
        </div>

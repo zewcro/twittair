@@ -16,7 +16,7 @@ function OneTwit({ id, author, content, like, rt, publication }) {
         <div className="tweet-header">
           <img src="{user.profilpic}" alt="" className="avator" />
           <div className="tweet-header-info">
-            {author} <span>@{id}</span>
+            {author} <span>@{author}</span>
             <span>{publication}</span>
             <p> {content} </p>
           </div>

@@ -27,7 +27,6 @@ export default class TwitFeed extends React.Component {
     this.setState({ posts: data });
     console.log(this.state.posts);
 
-    // if url = /profil  :
   }
   render() {
     return (
@@ -40,6 +39,7 @@ export default class TwitFeed extends React.Component {
               <OneTwit
                 id={post.post_id}
                 author={post.post_author}
+                author_profil_pic = {post.author_profil_pic}
                 content={post.post_content}
                 like={post.nb_like}
                 rt={post.nb_rt}

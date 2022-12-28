@@ -24,6 +24,7 @@ const SignUpPage = () => {
         liked_twits: [""],
         rt_twits: [""],
         user_posts: [""],
+        
       };
 
       axios

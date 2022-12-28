@@ -6,14 +6,11 @@ import "../Styles/Twitbox.css";
 import axios from "axios";
 
 function TwitBox() {
-
-
   const connected_user = document.cookie.split("=")[1];
   console.log("connected user is :" + connected_user);
 
   const [message, setMessage] = useState("");
   const twit_content = useRef(null);
-
 
   const handleMessageChange = (event) => {
     // get the text area value
@@ -28,9 +25,13 @@ function TwitBox() {
     setTimeout(() => {
       window.location.reload();
     }, 550);
+    
   };
 
-  
+    const getAuthorProfilPic = async () => {
+
+  }
+
   const postTwit = (event) => {
     // content of the twit
     console.log(twit_content.current.value);
@@ -39,6 +40,7 @@ function TwitBox() {
     const url = "http://localhost:5001/new_twit";
     axios
       .post(url, {
+        author_profil_pic: "rtes",
         post_id: "",
         post_author: connected_user,
         post_content: new_twit_content,

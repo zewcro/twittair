@@ -52,8 +52,18 @@
 }
 
 .biography_container {  
-  margin-top: -10%;
-  max-width: 95%;
+  margin-top: -15%;
+  margin-left: 10%;
+  max-width: 95%!important;
+  max-height: 10%;
+}
+
+.biography_data{
+  background-color: purple ;
+  margin-left: 25%;
+  max-width: 65%!important;
+  max-height: 75px;
+  position: relative;
 }
 
 .displayed_name {
