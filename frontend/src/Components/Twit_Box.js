@@ -7,7 +7,7 @@ import axios from "axios";
 
 function TwitBox() {
   const connected_user = document.cookie.split("=")[1];
-  console.log("connected user is :" + connected_user);
+  //console.log("connected user is :" + connected_user);
 
   const [message, setMessage] = useState("");
   const twit_content = useRef(null);
@@ -24,23 +24,32 @@ function TwitBox() {
   const feedRefreshing = () => {
     setTimeout(() => {
       window.location.reload();
-    }, 550);
-    
+    }, 14550);
   };
 
-    const getAuthorProfilPic = async () => {
+  const getAuthorProfilPic = async () => {
+    fetch("http://127.0.0.1:5003/user/getpic/" + connected_user)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("NETWORK RESPONSE ERROR");
+        }
+      })
+      .then((data) => {
+        const [{profil_pic}] = data
+        console.log(profil_pic);
+      });
+  };
 
-  }
-
-  const postTwit = (event) => {
-    // content of the twit
-    console.log(twit_content.current.value);
+  const postTwit = (event, profil_pic) => {
+    
     const new_twit_content = twit_content.current.value;
 
     const url = "http://localhost:5001/new_twit";
     axios
       .post(url, {
-        author_profil_pic: "rtes",
+        author_profil_pic: profil_pic,
         post_id: "",
         post_author: connected_user,
         post_content: new_twit_content,
