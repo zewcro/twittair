@@ -6,7 +6,8 @@ import "../Styles/Twitbox.css";
 import axios from "axios";
 
 function TwitBox() {
-  const connected_user = document.cookie.split("=")[1];
+
+  let connected_user = document.cookie.split("=")[1];
   //console.log("connected user is :" + connected_user);
 
   const [message, setMessage] = useState("");
@@ -34,6 +35,9 @@ function TwitBox() {
     const user_url_profil_pic = cookieObj.get("profil_pic");
     const new_twit_content = twit_content.current.value;
     const url = "http://localhost:5001/new_twit";
+    
+
+    let connected_user = cookieObj.get("user");
 
     axios
       .post(url, {
