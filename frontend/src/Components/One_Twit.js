@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/OneTwit.css";
 
-function OneTwit({ id, author, content, like, rt, publication }) {
+function OneTwit({ id, author,author_profil_pic, content, like, rt, publication }) {
   return (
     <>
       <link
@@ -14,7 +14,7 @@ function OneTwit({ id, author, content, like, rt, publication }) {
       />
       <div className="tweet-wrap">
         <div className="tweet-header">
-          <img src="{user.profilpic}" alt="" className="avator" />
+          <img src={author_profil_pic} alt="" className="avator" />
           <div className="tweet-header-info">
             {author} <span>@{author}</span>
             <span>{publication}</span>
