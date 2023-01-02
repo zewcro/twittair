@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -7,8 +7,19 @@ import axios from "axios";
 import "../Styles/Login.css";
 
 function Login() {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const removeCookie = () => {
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    document.cookie = "profil_pic=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    console.log('cookie deleted');
+  }
+
+  useEffect(() => {
+    removeCookie();
+  });
 
   async function submitLogging() {
     axios.post('http://127.0.0.1:5002/logging', {
