@@ -7,8 +7,12 @@ import LeftMenu from "./Left_Menu";
 import Right_Menu from "./Right_menu";
 
 function Home() {
+
   useEffect(() => {
-    const connected_user = document.cookie.split("=")[1];
+    const cookieObj = new URLSearchParams(
+      document.cookie.replaceAll("&", "%26").replaceAll("; ", "&")
+    );
+    const connected_user = cookieObj.get("user");
     console.log("connected user is :" + connected_user);
 
     const getUserProfilPic = () => {
@@ -23,7 +27,7 @@ function Home() {
         .then((data) => {
           const [{ profil_pic }] = data;
           console.log(profil_pic);
-          // ici on créer un cookie qui contient le contenu de la variable profil pic
+          // creating a cookie for the
           document.cookie = "profil_pic=" + profil_pic + ";expires=Wed, 05 Aug 2999 23:00:00 UTC";
         });
     };

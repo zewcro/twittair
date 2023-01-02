@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-
 import "../Styles/SignUp.css";
 
 const SignUpPage = () => {
+
+  const removeCookie = () => {
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    document.cookie = "profil_pic=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    console.log("cookie deleted");
+  };
+
+  useEffect(() => {
+    removeCookie();
+  });
+
   const {
     register,
     watch,
@@ -24,7 +34,6 @@ const SignUpPage = () => {
         liked_twits: [""],
         rt_twits: [""],
         user_posts: [""],
-        
       };
 
       axios
