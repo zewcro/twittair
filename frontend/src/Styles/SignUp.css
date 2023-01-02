@@ -1,13 +1,18 @@
-.container{
-    margin-top: 50px;
-}
 .heading{
     font-size: 3em;
 }
 .form{
     margin:auto;
     width: 80%;
+    margin-top: 20%;
+    border: none;   
+
 }
 .recipe{
     margin-top:20px;
+}
+
+.container{
+    width: 50%!;
+    height: 40%;
 }

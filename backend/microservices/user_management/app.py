@@ -26,7 +26,7 @@ class Users(db.Document):
     followers_count = db.IntField()
     followers_list = db.ListField()
     following_count = db.IntField()
-    following_list = db.ListField()
+    following_list = db.ListField()     
     liked_twits = db.ListField()
     rt_twits = db.ListField()
     user_posts = db.ListField()
@@ -37,6 +37,8 @@ class Users(db.Document):
 @app.route('/user/getpic/<username>', methods=["GET"])
 def getAuthorProfilPic(username=""):
     profil_pic_link = Users.objects(username=username).only('profil_pic').exclude('id').to_json()
+    print('LINK IS : ' + profil_pic_link)
+    
     return profil_pic_link
 
 

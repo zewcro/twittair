@@ -24,32 +24,20 @@ function TwitBox() {
   const feedRefreshing = () => {
     setTimeout(() => {
       window.location.reload();
-    }, 14550);
-  };
-
-  const getAuthorProfilPic = async () => {
-    fetch("http://127.0.0.1:5003/user/getpic/" + connected_user)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("NETWORK RESPONSE ERROR");
-        }
-      })
-      .then((data) => {
-        const [{profil_pic}] = data
-        console.log(profil_pic);
-      });
+    }, 550);
   };
 
   const postTwit = (event, profil_pic) => {
-    
+    const cookieObj = new URLSearchParams(
+      document.cookie.replaceAll("&", "%26").replaceAll("; ", "&")
+    );
+    const user_url_profil_pic = cookieObj.get("profil_pic");
     const new_twit_content = twit_content.current.value;
-
     const url = "http://localhost:5001/new_twit";
+
     axios
       .post(url, {
-        author_profil_pic: profil_pic,
+        author_profil_pic: user_url_profil_pic, // on enregistre le post avec comme url la valeur du cookie
         post_id: "",
         post_author: connected_user,
         post_content: new_twit_content,
@@ -65,10 +53,21 @@ function TwitBox() {
     feedRefreshing();
   };
 
+
+  const removeCookie = () => {
+    document.cookie = "profil_pic=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    console.log('cookie deleted');
+  }
+
   const cleanBox = () => {
     console.log("just cleaned the box!");
     // set the value to null to clear the box
     twit_content.current.value = "";
+    removeCookie();
+    // kill the cookie profil_pic 
+    // initialisiation du cookie avec une duree de vie de 10min 
+    // au clic du bouton on change la durée de vie pour time.now() + 1s 
+
   };
 
   return (

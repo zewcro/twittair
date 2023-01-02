@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
  
-import "../Styles/SignUp.css";
+import "../Styles/Login.css";
 
 function Login() {
   const [username, setUsername] = useState("");

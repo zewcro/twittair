@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Styles/Home.css";
 
 import TwitBox from "./Twit_Box";
@@ -6,11 +6,29 @@ import TwitFeed from "./Twit_Feed";
 import LeftMenu from "./Left_Menu";
 import Right_Menu from "./Right_menu";
 
-
 function Home() {
-  
-  const connected_user = document.cookie.split("=")[1];
-  console.log("connected user is :" + connected_user);
+  useEffect(() => {
+    const connected_user = document.cookie.split("=")[1];
+    console.log("connected user is :" + connected_user);
+
+    const getUserProfilPic = () => {
+      fetch("http://127.0.0.1:5003/user/getpic/" + connected_user)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("NETWORK RESPONSE ERROR");
+          }
+        })
+        .then((data) => {
+          const [{ profil_pic }] = data;
+          console.log(profil_pic);
+          // ici on créer un cookie qui contient le contenu de la variable profil pic
+          document.cookie = "profil_pic=" + profil_pic + ";expires=Wed, 05 Aug 2999 23:00:00 UTC";
+        });
+    };
+    getUserProfilPic();
+  });
 
   return (
     <div className="row">
