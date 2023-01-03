@@ -27,7 +27,7 @@ graph TD
     
 ```
 
-## Project Roadmap
+<!-- ## Project Roadmap
 ```mermaid
 mindmap
   root((Twittair))
@@ -60,7 +60,7 @@ mindmap
         Delete a post
         drafts
 ```
-
+ -->
 
 Every item on the roadmap is an issue, with a label that indicates each of the following:
 
@@ -70,7 +70,7 @@ Infrastructure :
 
 - ✔️ | microservices architecture implementation
 
-- ❌️ | Database Cloud implementation
+- ❌️ | Database Cloud implementation    
 
 
 Software : 
@@ -81,13 +81,21 @@ Software :
 
 - ✔️ | React Base structure
 
-- ❌️ | React Routes
+- ✔️ | React Routes
 
-- ❌️ | Make a post
+- ✔️ | Make a post
 
-- ❌️ | User profile
+- ✔️ | Personnal Feed
 
-- ❌️ | User can configure the app
+- ✔️ | Profil Page
+
+- ❌️ | Like a Twitt
+
+- ❌️ | RT a Twitt
+
+- ❌️ | Notifications
+
+- ❌️ | Messages
 
 
 
