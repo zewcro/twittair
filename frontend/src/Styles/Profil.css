@@ -1,77 +1,174 @@
 .container {
-  width: 100%;
+  /* important because '.container' is a bootstrap class */ 
+  width: 100%!important;
   height: 100%;
   margin: 1px;
   border: 2px solid grey;
 }
 
-
 .banner_img_container {
+  height: 100%;
   width: 100%;
-  margin-left: 0%;
-  height: 90%;
-  position: relative;
+
 }
 
-
 .banner_img{
-  width: 100%;
   height: 100%;
-  margin-left: -2%;
-  height: 60%;
-  position: relative;
+  width: 100%;
 }
 
 
 .profil_pic_container{
-  background-color: blue;
-  width: 10%;
-  height: 20%;
-  margin-top: -12%;
-  border-radius: 50%;
-  margin-left: -1%;
-  position: absolute;
+  background-color: white;
+  margin: -5% 0% 0% 0%!important;
+  width: 8%!important;
+  height: 10%!important;
+  border-radius: 50%!important;
+  position: absolute!important;
 }
 
 
 .profil_pic {
-  background-color: blue;
-  width: 100%;
-  height: 100%;
-  margin-top: 0%;
-  border-radius: 50%;
-  margin-left: -50%;
-  position: absolute;
+  margin-left: -50%!important;
+  background-color: blue!important;
+  width: 100%!important;
+  height: 100%!important;
+  border-radius: 50%!important;
+  position: absolute!important;
 }
 
 
+.credentials_container{
+  height: 100%;
+  width: 100%;
+}
+
 .user_name_informations {
-  margin-top:-2%;
-  margin-left: 2%;
-  position: absolute;
+  margin-left: -78%!important;
+
 }
 
 .biography_container {  
-  margin-top: -15%;
-  margin-left: 10%;
-  max-width: 95%!important;
-  max-height: 10%;
+  margin-top: -25%;
+  max-width: 70%!important;
+  max-height: 55%;
+  width: 70%;
+  margin-left: 25%;
 }
 
 .biography_data{
-  background-color: purple ;
-  margin-left: 25%;
-  max-width: 65%!important;
-  max-height: 75px;
-  position: relative;
-}
-
-.displayed_name {
-  margin-left: -40%;
-  font-size: 18px;
-  max-width: 200px;
+  font-size: 14px!important;
+  max-height: 55%!important;
 }
 
 .username {
-    margin-left: -60%;
+  margin-top: 3%!important;
 }
+
+.followers{
+  font-size: 13px!important;
+  font-weight: bold!important;
+}
+
+
+/* media queries for responsive design */ 
+
+@media screen and (min-width: 300px) and (max-width: 940px) {
+  #left_column{
+    display: none!important;
+  }
+
+  #right_column {
+    display: none!important;
+  }
+
+  .credentials_container{
+    background-color: purple;
+  }
+
+.username {
+    margin-top: 18%!important;
+  }
+}
+
+
+
+@media screen and (min-width: 940px) and (max-width: 1170px) {
+  .biography_data{
+    font-size: 11px!important;
+  }
+  .followers{
+    font-size: 10px!important;
+  }
+
+  .credentials_container{
+    background-color: orange;
+  }
+
+  .username {
+    margin-top: 9%!important;
+  }
+
+  .biography_container {  
+    margin-top: -30%;
+  }
+}
+
+
+@media screen and (min-width: 1170px) and (max-width: 1450px) {
+  .biography_data{
+    font-size: 12px!important;
+  }
+  .followers{
+    font-size: 11px!important;
+  }
+
+  .credentials_container{
+    background-color: yellow;
+  }
+
+  .username {
+    margin-top: 5%!important;
+  }
+
+  .biography_container {  
+    margin-top: -25%;
+  }
+}
+
+
+
+@media screen and (min-width: 1450px) and (max-width: 1895px) {
+  .profil_pic_container{
+    margin: -4% 0% 0% 0%!important;
+  }
+  .credentials_container{
+    background-color: pink;
+  }
+  
+.username {
+  margin-top: 5%!important;
+}
+
+  .biography_container {  
+    margin-top: -20%;
+  }
+}
+
+
+@media screen and (min-width: 1895px) and (max-width: 2540px) {
+  .credentials_container{
+    background-color: green;
+  }
+  .biography_container {  
+    margin-top: -14%;
+  }
+
+.profil_pic_container{
+  margin: -3% 0% 0% 0%!important;
+}
+
+
+
+}
+

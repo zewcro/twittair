@@ -6,6 +6,7 @@ import "../Styles/Twitbox.css";
 import axios from "axios";
 
 function TwitBox() {
+
   let connected_user = document.cookie.split("=")[1];
   //console.log("connected user is :" + connected_user);
 
@@ -34,6 +35,7 @@ function TwitBox() {
     const user_url_profil_pic = cookieObj.get("profil_pic");
     const new_twit_content = twit_content.current.value;
     const url = "http://localhost:5001/new_twit";
+    
 
     let connected_user = cookieObj.get("user");
 
@@ -56,20 +58,21 @@ function TwitBox() {
     removeCookie();
   };
 
+
   const removeCookie = () => {
-    document.cookie =
-      "profil_pic=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
-    console.log("cookie deleted");
-  };
+    document.cookie = "profil_pic=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    console.log('cookie deleted');
+  }
 
   const cleanBox = () => {
     console.log("just cleaned the box!");
     // set the value to null to clear the box
     twit_content.current.value = "";
     removeCookie();
-    // kill the cookie profil_pic
-    // initialisiation du cookie avec une duree de vie de 10min
-    // au clic du bouton on change la durée de vie pour time.now() + 1s
+    // kill the cookie profil_pic 
+    // initialisiation du cookie avec une duree de vie de 10min 
+    // au clic du bouton on change la durée de vie pour time.now() + 1s 
+
   };
 
   return (

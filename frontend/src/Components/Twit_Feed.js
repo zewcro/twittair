@@ -8,7 +8,12 @@ export default class TwitFeed extends React.Component {
   };
 
   async componentDidMount() {
-    const connected_user = document.cookie.split("=")[1];
+    const cookieObj = new URLSearchParams(
+      document.cookie.replaceAll("&", "%26").replaceAll("; ", "&")
+    );
+
+    const connected_user = cookieObj.get("user");
+
     let curr_url = window.location.href;
     let url_to_fetch = "";
 
@@ -26,7 +31,6 @@ export default class TwitFeed extends React.Component {
     const data = await response.json();
     this.setState({ posts: data });
     console.log(this.state.posts);
-
   }
   render() {
     return (
@@ -39,7 +43,7 @@ export default class TwitFeed extends React.Component {
               <OneTwit
                 id={post.post_id}
                 author={post.post_author}
-                author_profil_pic = {post.author_profil_pic}
+                author_profil_pic={post.author_profil_pic}
                 content={post.post_content}
                 like={post.nb_like}
                 rt={post.nb_rt}

@@ -12,11 +12,15 @@ import "../Styles/Profil.css";
 function Profil() {
   const [userData, setUserData] = useState('');
 
-  const connected_user = document.cookie.split("=")[1];
-  console.log("connected user is :" + connected_user);
+  const cookieObj = new URLSearchParams(
+    document.cookie.replaceAll("&", "%26").replaceAll("; ", "&")
+  );
+
+  const connected_user = cookieObj.get("user");
 
 
   useEffect(() => {
+    console.log(connected_user);
     const url = "http://127.0.0.1:5002/user/" + connected_user;
 
     const fetchData = async () => {
@@ -46,10 +50,11 @@ function Profil() {
           <div className="profil_pic_container">
             <img className="profil_pic"src={userData.profil_pic} alt="profil_pic" />
           </div>
-          <div className="user_name_informations">
-          <h3 className="displayed_name">{userData.displayed_name}</h3>
-          <p className="username">@{userData.username}</p>
-          
+          <div className="credentials_container">
+           <div className="user_name_informations">
+            <br />
+          <p className="username"><b>@{userData.username}</b></p>
+          </div>
         </div>
         <div className="biography_container">
         <p className="biography_data">{userData.biography}</p>
