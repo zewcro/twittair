@@ -1,5 +1,6 @@
 import React, { useRef, useState, Component, useEffect } from "react";
 import OneTwit from "./One_Twit";
+import LikeButton from "./LikeButton";
 
 export default class TwitFeed extends React.Component {
   state = {
@@ -48,7 +49,18 @@ export default class TwitFeed extends React.Component {
                 like={post.nb_like}
                 rt={post.nb_rt}
                 publication={post.published_date}
-              />
+              >
+                <LikeButton 
+               id={post.post_id}
+               author={post.post_author}
+               author_profil_pic={post.author_profil_pic}
+               content={post.post_content}
+               like={post.nb_like}
+               rt={post.nb_rt}
+               publication={post.published_date}
+                   >
+                </LikeButton>
+                </OneTwit>
               <br />
               <br />
             </div>

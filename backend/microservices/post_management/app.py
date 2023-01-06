@@ -56,7 +56,6 @@ def get_specific_post(id=""):
     else:
         return "ERROR :The post that you trying to display does not exist!"
     
-
     
 # return all the post where the author is equal to connected user
 @app.route('/posts/feed/<username>', methods=["GET"])
@@ -74,7 +73,15 @@ def createAds():
     return "twit've been created"
 
 
+@app.route('/like/<post_id>',methods=["PUT"])
+def update_likes(post_id=""):
+    posts_qty = Posts.objects.count()
+    data = request.json
 
+    post_to_update = Posts.objects.get(post_id=post_id).update(**data)
+    return "data've been modified"
+    
+    
 if __name__ == "__main__":
     app.run(port=5001)
 

@@ -2,14 +2,10 @@ import React from "react";
 import "../Styles/OneTwit.css";
 import LikeButton from "./LikeButton";
 
-
-
-function OneTwit({ id, author,author_profil_pic, content, like, rt, publication }) {
-
-
-
+function OneTwit({ id, author,author_profil_pic, content, like, rt, publication, children}) {
+  
   return (
-    <>
+    <> 
       <link
         href="https://fonts.googleapis.com/css?family=Asap"
         rel="stylesheet"
@@ -24,7 +20,7 @@ function OneTwit({ id, author,author_profil_pic, content, like, rt, publication 
           <div className="tweet-header-info">
             {author} <span>@{author}</span>
             <span>{publication}</span>
-            <p> {content} </p>
+            <p>{content} </p>
           </div>
         </div>
         <div className="tweet-info-counts">
@@ -69,11 +65,11 @@ function OneTwit({ id, author,author_profil_pic, content, like, rt, publication 
             <div className="retweet-count">{rt}</div>
           </div>
 
-         <LikeButton />
-            <div className="likes-count">{like}</div>
+          {children}
+            {/* <div className="likes-count">{like}</div> */}
           </div>
 
-          <div className="message">
+          {/* <div className="message">
             <svg
               className="feather feather-send sc-dnqmqq jxshSx"
               xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +86,7 @@ function OneTwit({ id, author,author_profil_pic, content, like, rt, publication 
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
-          </div>
+          </div> */}
         </div>
     </>
   );
